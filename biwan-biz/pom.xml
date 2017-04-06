@@ -15,7 +15,7 @@
     <url>http://www.biwan.com</url>
 
     <properties>
-        <start-class>com.itar.soa.biz.BootLauncher</start-class>
+        <start-class>com.itar.soa.biwan.BootLauncher</start-class>
     </properties>
 
     <dependencies>
