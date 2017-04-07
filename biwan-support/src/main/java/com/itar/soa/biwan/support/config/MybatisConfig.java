@@ -43,8 +43,8 @@ public class MybatisConfig {
 
 
     /**
-     * 问题： 这里的mappperLocation什么的，我都没给mybatis讲呀 ? 待会儿还是要讲的......
-     * 参数给mybatis指定数据源
+     *
+     * 参数给mybatis指定数据源,指定地址等
      * @return
      * @throws Exception
      *
