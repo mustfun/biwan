@@ -23,7 +23,7 @@ public class MasterDataSourceConfig {
     /**
      * 这个可以自己注入，也可以让spring帮助我们注入,自己可以注入多个
      */
-    @Bean
+    @Bean(name="masterDataSource", initMethod = "init", destroyMethod = "close") //也可以为master
     @Primary  //Spring优先选择被该注解所标记的数据源
     public DataSource dataSource(){
         DruidDataSource datasource = new DruidDataSource();
