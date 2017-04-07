@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/ Configure这个参数
+        可以直接配置在spring boot application配置文件里面
+    -->
     <settings>
         <!-- 全局映射器启用缓存 -->
         <setting name="cacheEnabled" value="true" />

@@ -1,5 +1,6 @@
 package com.itar.soa.biwan.facade;
 
+import com.itar.soa.biwan.model.City;
 import com.itar.soa.biwan.support.result.BaseResult;
 
 /**
@@ -7,5 +8,5 @@ import com.itar.soa.biwan.support.result.BaseResult;
  */
 public interface CityFacade {
 
-    BaseResult<String> getCity(Integer id);
+    BaseResult<City> getCity(Integer id);
 }

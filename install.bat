@@ -13,6 +13,9 @@ call mvn clean install -Dmaven.test.skip=true -e
 cd ../biwan-dao
 call mvn clean install -Dmaven.test.skip=true -e
 
+cd ../biwan-service
+call mvn clean install -Dmaven.test.skip=true -e
+
 cd ../biwan-business
 call mvn clean install -Dmaven.test.skip=true -e
 
