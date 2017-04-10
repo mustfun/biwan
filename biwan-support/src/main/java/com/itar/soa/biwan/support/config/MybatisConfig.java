@@ -49,6 +49,7 @@ public class MybatisConfig {
      * @throws Exception
      *
      * 事实下面写了这么多真的没啥卵用，没啥卵用，没啥卵用，因为Spring会自动把 druid dataSource给mybatis，知道吗？
+     * 但是可以适当的做一些定制化
      * @see  org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
      */
     @Bean

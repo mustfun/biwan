@@ -17,21 +17,23 @@
 
 	<!--##### ORM #####-->
 
+	<!--默认logger名称 druid.sql.Datasource -->
 	<logger name="com.alibaba.druid.datasource" level="debug" additivity="false">
 		<appender-ref ref="ROOT_CONSOLE"/>
 	</logger>
 
 
+	<!--默认logger名称 druid.sql.Connection -->
 	<logger name="com.alibaba.druid.connection" level="debug" additivity="false">
 		<appender-ref ref="ROOT_CONSOLE"/>
 	</logger>
 
-
+	<!--默认logger名称 druid.sql.Statement -->
 	<logger name="com.alibaba.druid.statement" level="debug" additivity="false">
 		<appender-ref ref="ROOT_CONSOLE"/>
 	</logger>
 
-
+	<!--默认logger名称 druid.sql.resultset -->
 	<logger name="com.alibaba.druid.resultset" level="debug" additivity="false">
 		<appender-ref ref="ROOT_CONSOLE"/>
 	</logger>
@@ -59,7 +61,7 @@
 	<!-- REST INBOUND / OUTBOUND LOG-->
 
 
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="ROOT_CONSOLE"/>
 	</root>
 </configuration>

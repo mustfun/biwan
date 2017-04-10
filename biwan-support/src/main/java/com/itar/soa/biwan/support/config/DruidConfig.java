@@ -12,4 +12,8 @@ public class DruidConfig extends BaseDruidConfig{
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    public DruidConfig(){
+        logger.info("druid正在初始化中====={}",getMaxActive());
+    }
+
 }
