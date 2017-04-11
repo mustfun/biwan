@@ -11,25 +11,25 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 /**
- * Created by dengzhiyuan on 2017/4/6.
+ * Created by dengzhiyuan on 2017/4/10.
  */
 @Configuration
-@EnableConfigurationProperties(DruidConfig.class)  //这个就相当于把DruidConfig也注入了，那边没有注入
-public class MasterDataSourceConfig extends AbstractDataSourceConfig{
+@EnableConfigurationProperties(SlaveDruidConfig.class)
+public class SlaveDataSourceConfig extends AbstractDataSourceConfig{
 
-    private static final Logger logger= LoggerFactory.getLogger(MasterDataSourceConfig.class);
+    private static final Logger logger= LoggerFactory.getLogger(SlaveDataSourceConfig.class);
+
 
     @Autowired
-    private DruidConfig druidConfig;
+    private SlaveDruidConfig slaveDruidConfig;
 
 
     /**
      * 这个可以自己注入，也可以让spring帮助我们注入,自己可以注入多个
      */
-    @Bean(name="masterDataSource", initMethod = "init", destroyMethod = "close") //也可以为master
-    @Primary  //Spring优先选择被该注解所标记的数据源
+    @Bean(name="slaveDataSource", initMethod = "init", destroyMethod = "close") //也可以为master
     public DataSource dataSource() throws Exception{
-        logger.info("master DataSource正在初始化........");
-        return initDataBase(druidConfig);
+        logger.info("slave datasource正在初始化中...");
+        return initDataBase(slaveDruidConfig);
     }
 }

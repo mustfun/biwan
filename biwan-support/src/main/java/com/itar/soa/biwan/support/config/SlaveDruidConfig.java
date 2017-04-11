@@ -7,12 +7,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Created by dengzhiyuan on 2017/4/5.
  */
-@ConfigurationProperties(prefix = "database.master.druid") //这个注解只是把属性设置进去，还达不到注入要求，要么加一个@configuration，要么加个@Component
-public class DruidConfig extends BaseDruidConfig{
+@ConfigurationProperties(prefix = "database.slave.druid") //这个注解只是把属性设置进去，还达不到注入要求，要么加一个@configuration，要么加个@Component
+public class SlaveDruidConfig extends BaseDruidConfig{
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    public DruidConfig(){
+    public SlaveDruidConfig(){
         logger.info("druid正在初始化中====={}",getMaxActive());
     }
 
