@@ -9,7 +9,7 @@
 spring boot restEasy druid
 - 2.切换到mybatis分支  
  融入mybatis
-- 3.切换到pagehelper分支  
-融入pagehelper
-- 4.读写分离配置成功
-- 5.下一步目标，配置分库分表
+- 3.切换到pagehelper分支 ，融入pagehelper
+- 4.sharding-jdbc-分支读写分离配置成功
+- 5.sharding-jdbc-2集成spring事务管理
+- 6.sharding-jdbc-3分支

@@ -25,6 +25,7 @@ public class CityServiceImpl implements CityService {
 
         /**
          * 没有上面这句话时候会去读从库，加了之后会去读主库
+         * ，sharding-jdbc会自动选择去读取从库还是主库
          */
 
         return cityMapper.selectByPrimaryKey(id);
