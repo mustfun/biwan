@@ -9,4 +9,6 @@ import com.itar.soa.biwan.support.result.BaseResult;
 public interface CityFacade {
 
     BaseResult<City> getCity(Integer id);
+
+    BaseResult<Integer> addOneCity(City id);
 }

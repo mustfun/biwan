@@ -6,11 +6,9 @@ import com.itar.soa.biwan.service.CityService;
 import com.itar.soa.biwan.support.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -31,6 +29,20 @@ public class CityFacadeImpl implements CityFacade {
         City one = cityService.getOne(id);
         BaseResult<City> baseResult=new BaseResult<>();
         baseResult.setData(one);
+        return baseResult;
+    }
+
+    @Override
+    @Path("/put")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResult<Integer> addOneCity(@RequestBody City city) {
+        Integer integer = cityService.addOneCity(city);
+        BaseResult<Integer> baseResult=new BaseResult<>();
+        baseResult.setData(city.getId());
+        if (integer==1){
+            baseResult.setStatus(1);
+        }
         return baseResult;
     }
 }

@@ -7,4 +7,6 @@ import com.itar.soa.biwan.model.City;
  */
 public interface CityService {
     City getOne(Integer id);
+
+    Integer addOneCity(City city);
 }
