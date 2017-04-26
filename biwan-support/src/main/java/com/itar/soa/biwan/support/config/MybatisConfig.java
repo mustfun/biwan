@@ -1,11 +1,17 @@
 package com.itar.soa.biwan.support.config;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +20,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
@@ -31,12 +38,16 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@AutoConfigureAfter(MasterDataSourceConfig.class)
+@AutoConfigureAfter(MasterSlaveDataSourceConfig.class)
+//@MapperScan()不用这种方式
 public class MybatisConfig {
 
+    Logger LOG= LoggerFactory.getLogger(MybatisConfig.class);
 
-    @Autowired
-    private DataSource masterDataSource;
+    //已经使用的读写分离的数据源了
+    //@Autowired  //这个注解是根据类型进行装配的，我们这类要根据名称进行装配，所以只能用@Resource
+    @Resource
+    private DataSource dataSource;
 
     @Autowired
     private MybatisProperties properties; //这个其实mybatis已经帮我们弄好了，直接拿出来
@@ -53,10 +64,12 @@ public class MybatisConfig {
      * @see  org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
      */
     @Bean
-    @ConditionalOnMissingBean //全文只需要一个sqlSessionFactory,所以只能用这个，意思是说当bean missing的时候就进行注入
+    //@ConditionalOnMissingBean //全文只需要一个sqlSessionFactory,所以只能用这个，意思是说当bean missing的时候就进行注入
+    @ConditionalOnBean(name = "dataSource")
     public SqlSessionFactory sqlSessionFactory(ResourceLoader resourceLoader) throws Exception{
+        LOG.info("~~~~~~~~~~使用了我重新定义的数据源sqlSessionFactory~~~~~~~~~~~~~~");
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-        factory.setDataSource(masterDataSource);
+        factory.setDataSource(dataSource);
         factory.setVfs(SpringBootVFS.class);
 
         if (StringUtils.hasText(this.properties.getConfigLocation())) {
