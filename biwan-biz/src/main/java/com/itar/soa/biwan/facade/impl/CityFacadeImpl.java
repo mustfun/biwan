@@ -45,4 +45,14 @@ public class CityFacadeImpl implements CityFacade {
         }
         return baseResult;
     }
+    @Override
+    @Path("/saveAndGet")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResult<City> saveAndGet(City city) {
+        City returncity=cityService.saveAndGet(city);
+        BaseResult<City> baseResult=new BaseResult<>();
+        baseResult.setData(returncity);
+        return baseResult;
+    }
 }

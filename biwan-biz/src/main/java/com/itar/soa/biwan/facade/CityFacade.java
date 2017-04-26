@@ -11,4 +11,6 @@ public interface CityFacade {
     BaseResult<City> getCity(Integer id);
 
     BaseResult<Integer> addOneCity(City id);
+
+    BaseResult<City> saveAndGet(City id);
 }

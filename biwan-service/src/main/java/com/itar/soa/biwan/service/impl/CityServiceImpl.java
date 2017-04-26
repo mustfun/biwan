@@ -43,4 +43,16 @@ public class CityServiceImpl implements CityService {
         //int i=1/0; 测试事务也成功啦！啦啦啦啦啦
         return insert;
     }
+
+    /**
+     * 测试一下写库和读库的读写情况
+     * @param city
+     * @return
+     */
+    @Override
+    public City saveAndGet(City city) {
+        int id=cityMapper.insert(city);
+        return  cityMapper.selectByPrimaryKey(2);
+        //实际测试sharding-jdbc在写完主库之后，会去从库读
+    }
 }
