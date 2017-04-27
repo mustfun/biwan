@@ -12,6 +12,6 @@ public interface OrderFacade {
 
     BaseResult<Order> getOrder(Integer id);
 
-    BaseResult<List<Order>> getOrderListByIds(List<Integer> ids);
+    BaseResult<List<Order>> getOrderListByIds(String ids);
 
 }

@@ -22,7 +22,7 @@
         from t_order
         WHERE order_id in
 
-        <foreach collection="ids" item="item" open="(" close=")" separator=",">
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
             ${item}
         </foreach>
     </select>
