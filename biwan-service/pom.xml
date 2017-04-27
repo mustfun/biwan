@@ -39,7 +39,6 @@
         <dependency>
             <groupId>com.paypal.springboot</groupId>
             <artifactId>resteasy-spring-boot-starter</artifactId>
-            <version>2.3.0-RELEASE</version>
         </dependency>
 
 

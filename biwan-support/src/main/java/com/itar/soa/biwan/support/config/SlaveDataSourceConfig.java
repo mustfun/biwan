@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 /**
  * Created by dengzhiyuan on 2017/4/10.
  */
-@Configuration
+//@Configuration  本分支sharding-jdbc-4测试分库分表，读写分离先去除
 @EnableConfigurationProperties(SlaveDruidConfig.class)
 public class SlaveDataSourceConfig extends AbstractDataSourceConfig{
 

@@ -13,7 +13,7 @@ public class SlaveDruidConfig extends BaseDruidConfig{
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     public SlaveDruidConfig(){
-        logger.info("druid正在初始化中====={}",getMaxActive());
+        logger.info("druid正在初始化中====={slave数据库}",getMaxActive());
     }
 
 }

@@ -1,5 +1,6 @@
 package com.itar.soa.biwan.support.config;
 
+import com.itar.soa.biwan.support.config.shardingDatabase.ShardingDataSouceConfig;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -38,7 +39,8 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@AutoConfigureAfter(MasterSlaveDataSourceConfig.class)
+//@AutoConfigureAfter(MasterSlaveDataSourceConfig.class)  //读写分离的时候请打开
+@AutoConfigureAfter(ShardingDataSouceConfig.class) // 分库分表的时候请打开
 //@MapperScan()不用这种方式
 public class MybatisConfig {
 
@@ -65,7 +67,7 @@ public class MybatisConfig {
      */
     @Bean
     //@ConditionalOnMissingBean //全文只需要一个sqlSessionFactory,所以只能用这个，意思是说当bean missing的时候就进行注入
-    @ConditionalOnBean(name = "dataSource")
+    //@ConditionalOnBean(name = "dataSource")
     public SqlSessionFactory sqlSessionFactory(ResourceLoader resourceLoader) throws Exception{
         LOG.info("~~~~~~~~~~使用了我重新定义的数据源sqlSessionFactory~~~~~~~~~~~~~~");
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
